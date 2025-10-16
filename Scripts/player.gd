@@ -1,45 +1,45 @@
 extends CharacterBody2D
 
-const SPEED = 400 # Velocidad inicial
-var speed = SPEED
+var speed = 400
 
 # --- ENUMERACION ---
 enum State {
 	IDLE,
-	CAMINAR,
-	DRIVE
+	WALK,
+	DRIVE,
+	DEAD
 }
 
 var state = State.IDLE #Creamos una variable para el switch
 
 func _physics_process(delta: float) -> void:
-
 	var dir = Input.get_vector("Left", "Right", "Up", "Down")
-
+	velocity = dir * speed
 # --- MAQUINA DE ESTADOS ---
 	match state: 
-
 		State.IDLE:
 
 			# --- EJECUCION ---
+			# ANIMACION DE ESTAR QUIETO
 			
-
 			# --- CAMBIO ---
 			if dir:
-				state = State.CAMINAR
+				state = State.WALK
 
-		State.CAMINAR:
-
+		State.WALK:
+			
 			# --- EJECUCION ---
-			velocity = dir * speed
-
+			# ANIMACION DE CAMINAR
+			
 			# --- CAMBIO ---
 			if dir == Vector2.ZERO:
 				state = State.IDLE
 
 		State.DRIVE:
-
+			
 			# --- EJECUCION ---
+			# ANIMACION DE MANEJAR
+			
 			pass
 
 			# --- CAMBIO ---
