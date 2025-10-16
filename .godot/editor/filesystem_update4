@@ -1,3 +1,4 @@
 res://Escenas/main.tscn
-res://Scripts/main.gd
 res://Scripts/player.gd
+res://Scripts/main.gd
+res://Escenas/auto.gd
