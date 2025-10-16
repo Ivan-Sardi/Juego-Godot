@@ -2,28 +2,28 @@ extends CharacterBody2D
 
 var speed = 400 # Velocidad
 
-var walking = true # Booleano para saber si esta o no siendo controlado el personaje
+var driving = false # Booleano para saber si esta o no siendo controlado el vehiculo
 
 # -- Referencia a objetos --
 @onready var sprite = $Sprite2D
-
+@onready var player = get_parent().get_node("Player")
 
 # -- Distintos estados --
 enum State {
 	IDLE,
-	WALK,
+	DRIVE,
 	DEAD
 }
 
 var state = State.IDLE # Variable del estado/animaciones
 
 func _physics_process(delta: float) -> void:
-	if walking:
+	if driving:
+		player.global_position = global_position - Vector2(466,293) # Mueve el personaje al auto
 		
-		# -- Movimiento del personaje --
+		# -- Movimiento del auto --
 		var dir = Input.get_vector("Left", "Right", "Up", "Down")
 		velocity = dir * speed
-		
 		
 		# -- Maquina de estados --
 		match state: 
@@ -33,13 +33,13 @@ func _physics_process(delta: float) -> void:
 				
 				# --- CAMBIO ---
 				if dir:
-					state = State.WALK
+					state = State.DRIVE
 
-			State.WALK:
+			State.DRIVE:
 				
 				# ANIMACION DE MANEJAR
 				
-				# -- Rotacion del personaje --
+				# -- Rotacion del vehiculo --
 				match dir:
 					Vector2(0.0, -1.0):
 						sprite.rotation_degrees = 270
