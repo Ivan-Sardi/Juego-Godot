@@ -1,0 +1,22 @@
+# Godot 4+ specific
+.godot/
+export_presets.cfg
+# Godot 3.x specific (if migrating or for reference)
+.import/
+export_presets.cfg
+# User-specific configuration and temporary files
+.mono/
+.vscode/
+.idea/
+*.user
+*.usercfg
+# Build and export related files
+build/
+bin/
+export/
+# macOS specific
+.DS_Store
+# Linux specific
+Thumbs.db
+# Windows specific
+Desktop.ini
