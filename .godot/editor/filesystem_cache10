@@ -1,11 +1,11 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1760658303
+::res://::1760723932
 ::res://Escenas/::1760658283
 auto.gd::GDScript::7307678741394730061::1760658283::0::1::::<>CharacterBody2D<><>0<>0<><>::
 main.tscn::PackedScene::3018067264118097249::1760658283::0::1::::<><><>0<>0<><>::uid://dwks6fvyhtu84::::res://Scripts/main.gd<>uid://clo4j0ymh6yv4::::res://Scripts/player.gd<>uid://c2s7bospkvarf::::res://Sprites/icon.svg<>uid://dcd5nv18oca66::::res://Escenas/auto.gd<>uid://bcoofq8rru4up::::res://Sprites/Auto.png
 ::res://Scripts/::1760658283
 main.gd::GDScript::8725208950295680535::1760658283::0::1::::<>Node2D<><>0<>0<><>::
 player.gd::GDScript::5575598151611652655::1760658283::0::1::::<>CharacterBody2D<><>0<>0<><>::
-::res://Sprites/::1760658283
+::res://Sprites/::1760658303
 Auto.png::CompressedTexture2D::2556559518542345915::1760658283::1760658303::1::::<><><>0<>0<>30738f0460c8c33825ba9c9feff7891d<>res://.godot/imported/Auto.png-b53b3a6b6c36faebf3acd11f9df92cd8.ctex::
 icon.svg::CompressedTexture2D::6707044438577686383::1760658283::1760658303::1::::<><><>0<>0<>6aa53902c4aba868eab6323fd2f65d58<>res://.godot/imported/icon.svg-b67cfb692a937e61d2bda8561d9e8db7.ctex::

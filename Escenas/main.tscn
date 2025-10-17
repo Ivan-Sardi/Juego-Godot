@@ -16,38 +16,54 @@ size = Vector2(129.32562, 138.22406)
 script = ExtResource("1_0kh0y")
 
 [node name="Car" type="CharacterBody2D" parent="."]
+position = Vector2(246, 395)
+rotation = -1.5707964
 script = ExtResource("3_2ia52")
 
 [node name="Sprite2D" type="Sprite2D" parent="Car"]
 texture_filter = 1
-position = Vector2(332.53027, 121.931015)
+position = Vector2(-9.469727, 251.069)
 scale = Vector2(3.3354642, 3.5021555)
 texture = ExtResource("3_7xwpo")
 
-[node name="Car" type="Area2D" parent="Car/Sprite2D"]
+[node name="Car" type="Area2D" parent="Car"]
+position = Vector2(-9.469757, 251.06902)
+scale = Vector2(3.3354642, 3.5021555)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Car/Sprite2D/Car"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Car/Car"]
 position = Vector2(9.489128, 3.9409063)
 scale = Vector2(0.9999999, 0.9999997)
 shape = SubResource("RectangleShape2D_7xwpo")
 
 [node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(-13, -77)
 script = ExtResource("1_vt1rs")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 texture_filter = 1
-position = Vector2(827.1875, 422.77014)
+position = Vector2(894.1875, 455.7701)
 scale = Vector2(0.75292987, 0.7620331)
 texture = ExtResource("2_0kh0y")
 
-[node name="Area2D" type="Area2D" parent="Player/Sprite2D"]
+[node name="Area2D" type="Area2D" parent="Player"]
+position = Vector2(894.1875, 455.7701)
+scale = Vector2(0.75292987, 0.7620331)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Sprite2D/Area2D"]
-position = Vector2(-1.1608887, 2.0526733)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+position = Vector2(-1.5771499, 0.3016733)
 scale = Vector2(0.9999998, 0.99999994)
 shape = SubResource("RectangleShape2D_2ia52")
 
-[connection signal="area_entered" from="Player/Sprite2D/Area2D" to="." method="PersonajeEntraAArea"]
-[connection signal="area_entered" from="Player/Sprite2D/Area2D" to="Player" method="EntraAArea"]
-[connection signal="area_exited" from="Player/Sprite2D/Area2D" to="." method="PersonajeSaleDeArea"]
-[connection signal="area_exited" from="Player/Sprite2D/Area2D" to="Player" method="SaleDeArea"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(894, 455)
+scale = Vector2(0.99999994, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(102, 354)
+scale = Vector2(3.125, 2.8046875)
+texture = ExtResource("2_0kh0y")
+
+[connection signal="area_entered" from="Player/Area2D" to="." method="PersonajeEntraAArea"]
+[connection signal="area_entered" from="Player/Area2D" to="Player" method="EntraAArea"]
+[connection signal="area_exited" from="Player/Area2D" to="." method="PersonajeSaleDeArea"]
+[connection signal="area_exited" from="Player/Area2D" to="Player" method="SaleDeArea"]
