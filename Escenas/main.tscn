@@ -128,7 +128,7 @@ sprite_frames = SubResource("SpriteFrames_ktoa8")
 animation = &"Turn_left"
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(-13, -77)
+position = Vector2(-264, -77)
 script = ExtResource("1_vt1rs")
 
 [node name="Area2D" type="Area2D" parent="Player"]

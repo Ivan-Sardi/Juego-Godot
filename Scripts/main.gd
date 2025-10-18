@@ -11,6 +11,27 @@ extends Node2D
 # Variable que indica si el jugador está cerca del auto
 var nearCar = false
 
+func _physics_process(delta: float) -> void:
+	# -- Teletransporta al jugador todo el tiempo al lugar del que saldria del auto
+	if !player.exist:
+		# -- Varia el lugar de salida dependiendo de la rotacion del auto
+		if car.rotation > -2.17213559150696 and car.rotation < -0.67024177312851:
+			
+			player.global_position = car.global_position - Vector2(940,475)
+			
+		elif car.rotation > -0.67024177312851 and car.rotation < 0.45086994767189:
+			
+			player.global_position = car.global_position - Vector2(885,520)
+			
+		elif car.rotation > 0.45086994767189 and car.rotation < 2.31442379951477:
+			
+			player.global_position = car.global_position - Vector2(840,430)
+			
+		else:
+			
+			player.global_position = car.global_position - Vector2(920,400)
+			
+
 # --- Detección de entrada al área del coche ---
 func PersonajeEntraAArea(area: Area2D) -> void:
 	# Si el área detectada se llama "Car", marcamos que el jugador está cerca
@@ -36,7 +57,7 @@ func _input(event):
 			car.driving = true                # Activa el modo de conducción en el auto
 			player.exist = false              # Desactiva el control del personaje
 			player.visible = false            # Oculta el sprite del jugador
-			player.global_position = car.global_position # Mueve al jugador al mismo lugar del auto
+			
 
 			# Cambia la cámara activa al coche
 			car_cam.make_current()
@@ -47,8 +68,6 @@ func _input(event):
 			car.driving = false               # Desactiva el modo conducción
 			player.exist = true               # Reactiva el control del personaje
 			player.visible = true             # Vuelve a mostrarlo
-			player.global_position = car.global_position + Vector2(0, 100)
-			# Lo coloca un poco más abajo del coche (para que "salga")
 
 			# Cambia la cámara activa al jugador
 			player_cam.make_current()

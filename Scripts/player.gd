@@ -17,6 +17,9 @@ enum State {
 
 var state = State.IDLE # Variable del estado
 
+func _ready():
+	$Camera2D.make_current()
+
 func _physics_process(delta: float) -> void:
 	if exist:
 

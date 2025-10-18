@@ -1,20 +1,20 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1760755501
-::res://Escenas/::1760756187
-auto.gd::GDScript::7307678741394730061::1760752826::0::1::::<>CharacterBody2D<><>0<>0<><>::
-main.tscn::PackedScene::3018067264118097249::1760756187::0::1::::<><><>0<>0<><>::uid://dwks6fvyhtu84::::res://Scripts/main.gd<>uid://clo4j0ymh6yv4::::res://Scripts/player.gd<>uid://c2s7bospkvarf::::res://Sprites/icon.svg<>uid://dcd5nv18oca66::::res://Escenas/auto.gd<>uid://bcoofq8rru4up::::res://Sprites/Auto.png<>uid://cfcxlpp6aj7bp::::res://Sprites/autito1 girando_iz1.png<>uid://b7w6pyhlp5aa1::::res://Sprites/autito1 girando_iz2.png<>uid://rtw447m0xuli::::res://Sprites/autito1 girando_iz3.png<>uid://duh4n6aajimfi::::res://Sprites/autito1 girando_iz4.png<>uid://b80a5iklf8fih::::res://Sprites/autito1 girando1.png<>uid://b7og2ouqrv5nb::::res://Sprites/autito1 girando2.png<>uid://bulbvpkx4a8we::::res://Sprites/autito1 girando3.png<>uid://d3eqedugkb8ey::::res://Sprites/autito1 girando4.png
-::res://Scripts/::1760752982
-main.gd::GDScript::8725208950295680535::1760752982::0::1::::<>Node2D<><>0<>0<><>::
-player.gd::GDScript::5575598151611652655::1760752982::0::1::::<>CharacterBody2D<><>0<>0<><>::
-::res://Sprites/::1760756302
-autito1 girando1.png::CompressedTexture2D::4754315977559430755::1760755525::1760755525::1::::<><><>0<>0<>294dafd096bc62c771f38c4e2eb3840b<>res://.godot/imported/autito1 girando1.png-c856f726c1dcd1536953be32357779bd.ctex::
-autito1 girando2.png::CompressedTexture2D::4661778254032540523::1760755525::1760755525::1::::<><><>0<>0<>07fc73db9aa66ab63d4f9aae85eb35b7<>res://.godot/imported/autito1 girando2.png-b56177ff026c71f8e789b690cf7d1d5d.ctex::
-autito1 girando3.png::CompressedTexture2D::3813004734795279268::1760755525::1760755525::1::::<><><>0<>0<>c262574f42b75f7894dd6100cdd8dd19<>res://.godot/imported/autito1 girando3.png-7337e1751f7a1756cc2109b23f143f80.ctex::
-autito1 girando4.png::CompressedTexture2D::9133785987772524300::1760755525::1760755525::1::::<><><>0<>0<>08477ff26085f0b3be4722919aaa0ef1<>res://.godot/imported/autito1 girando4.png-f910cf8c17f9308aa1c5309aabb63b94.ctex::
-autito1 girando_iz1.png::CompressedTexture2D::5129331288082273433::1760755534::1760755534::1::::<><><>0<>0<>ccceb1fb85f5606bfdcaf4807cdbb5df<>res://.godot/imported/autito1 girando_iz1.png-79304174d1544ca8f42bf0c0ed331f90.ctex::
-autito1 girando_iz2.png::CompressedTexture2D::4679790276278834458::1760755534::1760755534::1::::<><><>0<>0<>97240147d697e9e07a3cdacfc0b91d5c<>res://.godot/imported/autito1 girando_iz2.png-1f9f62ff1620da3880a04daa83cf58d9.ctex::
-autito1 girando_iz3.png::CompressedTexture2D::1233822654228246934::1760755534::1760755534::1::::<><><>0<>0<>824239f439256239b4480cbf3d588789<>res://.godot/imported/autito1 girando_iz3.png-151cd22462ac865a9911a3d31ab53de8.ctex::
-autito1 girando_iz4.png::CompressedTexture2D::8579275204465570354::1760755534::1760755534::1::::<><><>0<>0<>90f452ea5b373c06d485a125baed55ee<>res://.godot/imported/autito1 girando_iz4.png-cddcd6093ad178b01238f7abf3203d8c.ctex::
-Auto.png::CompressedTexture2D::2556559518542345915::1760658283::1760658303::1::::<><><>0<>0<>30738f0460c8c33825ba9c9feff7891d<>res://.godot/imported/Auto.png-b53b3a6b6c36faebf3acd11f9df92cd8.ctex::
-icon.svg::CompressedTexture2D::6707044438577686383::1760658283::1760658303::1::::<><><>0<>0<>6aa53902c4aba868eab6323fd2f65d58<>res://.godot/imported/icon.svg-b67cfb692a937e61d2bda8561d9e8db7.ctex::
-pj.png::CompressedTexture2D::1527200634360519916::1760756302::1760756302::1::::<><><>0<>0<>98d66575d093cc1a48f308b94ee79222<>res://.godot/imported/pj.png-3f67d4ade42f7ccfe6109dc5abbe1465.ctex::
+::res://::1760771188
+::res://Escenas/::1760763269
+auto.gd::GDScript::7307678741394730061::1760763269::0::1::::<>CharacterBody2D<><>0<>0<><>::
+main.tscn::PackedScene::3018067264118097249::1760763269::0::1::::<><><>0<>0<><>::uid://dwks6fvyhtu84::::res://Scripts/main.gd<>uid://clo4j0ymh6yv4::::res://Scripts/player.gd<>uid://c2s7bospkvarf::::res://Sprites/icon.svg<>uid://dcd5nv18oca66::::res://Escenas/auto.gd<>uid://v011hwaf18f5::::res://Sprites/pj.png<>uid://b7w6pyhlp5aa1::::res://Sprites/autito1 girando_iz2.png<>uid://rtw447m0xuli::::res://Sprites/autito1 girando_iz3.png<>uid://duh4n6aajimfi::::res://Sprites/autito1 girando_iz4.png<>uid://b80a5iklf8fih::::res://Sprites/autito1 girando1.png<>uid://b7og2ouqrv5nb::::res://Sprites/autito1 girando2.png<>uid://bulbvpkx4a8we::::res://Sprites/autito1 girando3.png<>uid://d3eqedugkb8ey::::res://Sprites/autito1 girando4.png
+::res://Scripts/::1760763269
+main.gd::GDScript::8725208950295680535::1760763269::0::1::::<>Node2D<><>0<>0<><>::
+player.gd::GDScript::5575598151611652655::1760763269::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://Sprites/::1760763333
+autito1 girando1.png::CompressedTexture2D::4754315977559430755::1760763269::1760763333::1::::<><><>0<>0<>294dafd096bc62c771f38c4e2eb3840b<>res://.godot/imported/autito1 girando1.png-c856f726c1dcd1536953be32357779bd.ctex::
+autito1 girando2.png::CompressedTexture2D::4661778254032540523::1760763269::1760763333::1::::<><><>0<>0<>07fc73db9aa66ab63d4f9aae85eb35b7<>res://.godot/imported/autito1 girando2.png-b56177ff026c71f8e789b690cf7d1d5d.ctex::
+autito1 girando3.png::CompressedTexture2D::3813004734795279268::1760763269::1760763333::1::::<><><>0<>0<>c262574f42b75f7894dd6100cdd8dd19<>res://.godot/imported/autito1 girando3.png-7337e1751f7a1756cc2109b23f143f80.ctex::
+autito1 girando4.png::CompressedTexture2D::9133785987772524300::1760763269::1760763333::1::::<><><>0<>0<>08477ff26085f0b3be4722919aaa0ef1<>res://.godot/imported/autito1 girando4.png-f910cf8c17f9308aa1c5309aabb63b94.ctex::
+autito1 girando_iz1.png::CompressedTexture2D::5129331288082273433::1760763269::1760763333::1::::<><><>0<>0<>ccceb1fb85f5606bfdcaf4807cdbb5df<>res://.godot/imported/autito1 girando_iz1.png-79304174d1544ca8f42bf0c0ed331f90.ctex::
+autito1 girando_iz2.png::CompressedTexture2D::4679790276278834458::1760763269::1760763333::1::::<><><>0<>0<>97240147d697e9e07a3cdacfc0b91d5c<>res://.godot/imported/autito1 girando_iz2.png-1f9f62ff1620da3880a04daa83cf58d9.ctex::
+autito1 girando_iz3.png::CompressedTexture2D::1233822654228246934::1760763269::1760763333::1::::<><><>0<>0<>824239f439256239b4480cbf3d588789<>res://.godot/imported/autito1 girando_iz3.png-151cd22462ac865a9911a3d31ab53de8.ctex::
+autito1 girando_iz4.png::CompressedTexture2D::8579275204465570354::1760763269::1760763333::1::::<><><>0<>0<>90f452ea5b373c06d485a125baed55ee<>res://.godot/imported/autito1 girando_iz4.png-cddcd6093ad178b01238f7abf3203d8c.ctex::
+Auto.png::CompressedTexture2D::2556559518542345915::1760651654::1760651671::1::::<><><>0<>0<>30738f0460c8c33825ba9c9feff7891d<>res://.godot/imported/Auto.png-b53b3a6b6c36faebf3acd11f9df92cd8.ctex::
+icon.svg::CompressedTexture2D::6707044438577686383::1760647886::1760649980::1::::<><><>0<>0<>6aa53902c4aba868eab6323fd2f65d58<>res://.godot/imported/icon.svg-b67cfb692a937e61d2bda8561d9e8db7.ctex::
+pj.png::CompressedTexture2D::1527200634360519916::1760763269::1760763333::1::::<><><>0<>0<>98d66575d093cc1a48f308b94ee79222<>res://.godot/imported/pj.png-3f67d4ade42f7ccfe6109dc5abbe1465.ctex::
