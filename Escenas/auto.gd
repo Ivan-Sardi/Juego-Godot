@@ -1,64 +1,94 @@
 extends CharacterBody2D
 
-var speed = 400 # Velocidad
+# --- Variables de movimiento ---
+var speed = 0.0              
+var acceleration = 400.0     
+var friction = 300.0        
+var max_forward = 1000.0    
+var max_reverse = 400.0      
+var turn_speed = 0.1      
+var turn_max = 2.5
 
-var driving = false # Booleano para saber si esta o no siendo controlado el vehiculo
+var driving = false           # Si el jugador está manejando el auto o no
 
-# -- Referencia a objetos --
-@onready var sprite = $Sprite2D
-@onready var player = get_parent().get_node("Player")
+# --- Estados del vehículo ---
+enum State { FORWARD, TURN_LEFT, TURN_RIGHT }
+var state = State.FORWARD
 
-# -- Distintos estados --
-enum State {
-	IDLE,
-	DRIVE,
-	DEAD
-}
-
-var state = State.IDLE # Variable del estado/animaciones
-
+# --- Función que se ejecuta en cada frame de física ---
 func _physics_process(delta: float) -> void:
-	if driving:
-		player.global_position = global_position - Vector2(466,293) # Mueve el personaje al auto
-		
-		# -- Movimiento del auto --
-		var dir = Input.get_vector("Left", "Right", "Up", "Down")
-		velocity = dir * speed
-		
-		# -- Maquina de estados --
-		match state: 
-			State.IDLE:
+	if not driving:
+		# Si no se está manejando, el coche no se mueve
+		return
 
-				# ANIMACION DE ESTAR QUIETO
-				
-				# --- CAMBIO ---
-				if dir:
-					state = State.DRIVE
+	# -- Animaciones --
+	match state:
+		State.FORWARD:
+			$AnimatedSprite2D.play("Forward")
+			# Cambio
+			if Input.is_action_pressed("Left"):
+				state = State.TURN_LEFT
+			if Input.is_action_pressed("Right"):
+				state = State.TURN_RIGHT
+		State.TURN_LEFT:
+			$AnimatedSprite2D.play("Turn_left")
+			# Cambio
+			if not Input.is_action_pressed("Left"):
+				if Input.is_action_pressed("Right"):
+					state = State.TURN_RIGHT
+				else:
+					state = State.FORWARD
+		State.TURN_RIGHT:
+			$AnimatedSprite2D.play("Turn_right")
+			# Cambio
+			if not Input.is_action_pressed("Right"):
+				if Input.is_action_pressed("Left"):
+					state = State.TURN_LEFT
+				else:
+					state = State.FORWARD
 
-			State.DRIVE:
-				
-				# ANIMACION DE MANEJAR
-				
-				# -- Rotacion del vehiculo --
-				match dir:
-					Vector2(0.0, -1.0):
-						sprite.rotation_degrees = 270
-					Vector2(0.0, 1.0):
-						sprite.rotation_degrees = 90
-					Vector2(-1.0, 0.0):
-						sprite.rotation_degrees = 180
-					Vector2(1.0, 0.0):
-						sprite.rotation_degrees = 0
-				
-				# --- CAMBIO ---
-				if dir == Vector2.ZERO:
-					state = State.IDLE
-					
-			State.DEAD:
+	# --- Controles de aceleración y freno ---
+	if Input.is_action_pressed("Up"):
+		# Acelera hacia adelante
+		speed += acceleration * delta
+		# Aumenta la velocidad de doblado
+		if speed > 10:
+			turn_speed += 0.4 * delta
+		elif speed < 0:
+			turn_speed -= 0.4 * delta
+	elif Input.is_action_pressed("Down"):
+		# Acelera hacia atrás (reversa)
+		speed -= acceleration * delta
+		# Aumenta la velocidad de doblado
+		if speed > 0:
+			turn_speed -= 0.4 * delta
+		elif speed < 5:
+			turn_speed += 0.4 * delta
+	else:
+		# Si no se presiona nada, aplica fricción para ir frenando y disminuye la velocidad de doblado
+		if abs(speed) > 0:
+			# move_toward reduce "speed" hacia 0 gradualmente
+			speed = move_toward(speed, 0, friction * delta)
+			turn_speed -= 0.4 * delta 
+		if speed < 0:
+			turn_speed -= 0.4 * delta
 
-				# ANIMACION DE MUERTE
-				
-				# --- CAMBIO ---
-				pass
+	# Limita la velocidad dentro de los máximos definidos
+	speed = clamp(speed, -max_reverse, max_forward)
+	turn_speed = clamp(turn_speed, 0, turn_max)
 
-		move_and_slide()
+	# --- Controles de giro ---
+	if abs(speed) > 10:  # Solo permite girar si el auto está moviéndose (evita girar en el lugar)
+		if Input.is_action_pressed("Left"):
+			rotation -= turn_speed * delta * sign(speed)
+		elif Input.is_action_pressed("Right"):
+			rotation += turn_speed * delta * sign(speed)
+
+	# --- Movimiento según la rotación actual ---
+	var direction := Vector2.RIGHT.rotated(rotation)
+
+	# Calcula la velocidad final aplicando dirección y velocidad
+	velocity = direction * speed * delta
+
+	# Mueve el cuerpo y detecta colisiones automáticamente
+	move_and_collide(velocity)
