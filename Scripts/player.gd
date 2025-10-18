@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var speed = 400 # Velocidad
+var speed = 400
 
 var exist = true # Booleano para saber si esta o no siendo controlado el personaje
 
@@ -15,7 +15,7 @@ enum State {
 	DEAD
 }
 
-var state = State.IDLE # Variable del estado/animaciones
+var state = State.IDLE # Variable del estado
 
 func _physics_process(delta: float) -> void:
 	if exist:

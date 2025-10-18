@@ -1,18 +1,15 @@
 extends Node2D
-# Este script controla la lógica general del mundo:
-# - Detectar si el jugador está cerca del auto
-# - Entrar o salir del vehículo
-# - Cambiar entre cámaras (jugador / coche)
+
+# Este script controla la lógica general del mundo
 
 # --- Referencias a nodos de la escena ---
-@onready var car = $Car                   # Referencia al nodo del auto
-@onready var player = $Player             # Referencia al nodo del jugador
-@onready var player_cam = $Player/Camera2D # Cámara del jugador (la que sigue al personaje)
-@onready var car_cam = $Car/Camera2D       # Cámara del auto (la que sigue al coche)
+@onready var car = $Car           
+@onready var player = $Player          
+@onready var player_cam = $Player/Camera2D 
+@onready var car_cam = $Car/Camera2D      
 
 # Variable que indica si el jugador está cerca del auto
 var nearCar = false
-
 
 # --- Detección de entrada al área del coche ---
 func PersonajeEntraAArea(area: Area2D) -> void:
@@ -35,7 +32,7 @@ func _input(event):
 
 		# --- Si el jugador NO está conduciendo todavía ---
 		if not car.driving:
-			# 🚶 Entrar al auto
+			# Entrar al auto
 			car.driving = true                # Activa el modo de conducción en el auto
 			player.exist = false              # Desactiva el control del personaje
 			player.visible = false            # Oculta el sprite del jugador
@@ -46,7 +43,7 @@ func _input(event):
 
 		# --- Si el jugador YA está conduciendo ---
 		else:
-			# 🚗 Salir del auto
+			# Salir del auto
 			car.driving = false               # Desactiva el modo conducción
 			player.exist = true               # Reactiva el control del personaje
 			player.visible = true             # Vuelve a mostrarlo
