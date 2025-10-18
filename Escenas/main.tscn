@@ -22,18 +22,21 @@ script = ExtResource("3_2ia52")
 
 [node name="Sprite2D" type="Sprite2D" parent="Car"]
 texture_filter = 1
-position = Vector2(-9.469727, 251.069)
+position = Vector2(4.0000105, 5)
 scale = Vector2(3.3354642, 3.5021555)
 texture = ExtResource("3_7xwpo")
 
 [node name="Car" type="Area2D" parent="Car"]
-position = Vector2(-9.469757, 251.06902)
+position = Vector2(4.999999, 270)
 scale = Vector2(3.3354642, 3.5021555)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Car/Car"]
-position = Vector2(9.489128, 3.9409063)
+position = Vector2(2.5393105, -72.260925)
 scale = Vector2(0.9999999, 0.9999997)
 shape = SubResource("RectangleShape2D_7xwpo")
+
+[node name="Camera2D" type="Camera2D" parent="Car"]
+position = Vector2(6.999999, 18)
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(-13, -77)
@@ -59,7 +62,7 @@ position = Vector2(894, 455)
 scale = Vector2(0.99999994, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(102, 354)
+position = Vector2(-52, 358)
 scale = Vector2(3.125, 2.8046875)
 texture = ExtResource("2_0kh0y")
 

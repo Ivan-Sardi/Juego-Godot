@@ -1,74 +1,58 @@
 extends CharacterBody2D
+# Este nodo representa un cuerpo con física en 2D que puede moverse y chocar con otros.
 
-var speed = 0
-var acceleration = 2
-var pos_car # Para despues hacer que gire
-var recoil = 3
-var friction = 0.9
-var max_forward = 10
-var max_reverse = 5
+# --- Variables de movimiento ---
+var speed: float = 0.0              # Velocidad actual del auto (positiva hacia adelante, negativa en reversa)
+var acceleration: float = 400.0     # Qué tan rápido acelera el auto
+var friction: float = 300.0         # Qué tan rápido se frena cuando no se acelera
+var max_forward: float = 1000.0     # Velocidad máxima hacia adelante
+var max_reverse: float = 400.0      # Velocidad máxima hacia atrás
+var turn_speed: float = 2.5         # Qué tan rápido gira (radianes por segundo aprox.)
 
-var driving = false # Booleano para saber si esta o no siendo controlado el vehiculo
+var driving: bool = false           # Si el jugador está manejando el auto o no
 
-# -- Referencia a objetos --
-@onready var player = get_parent().get_node("Player")
+# --- Estados del vehículo ---
+enum State { IDLE, DRIVE, DEAD }
+var state: State = State.IDLE       # Estado actual (quieto, conduciendo o destruido)
 
-# -- Distintos estados --
-enum State {
-	IDLE,
-	DRIVE,
-	DEAD
-}
-
-var state = State.IDLE # Variable del estado/animaciones
-
+# --- Función que se ejecuta en cada frame de física ---
 func _physics_process(delta: float) -> void:
-	if driving:
+	if not driving:
+		# Si no se está manejando, el coche no se mueve
+		return
 
-		player.global_position = global_position - Vector2(466,293) # Mueve el personaje al auto
+	# --- Controles de aceleración y freno ---
+	if Input.is_action_pressed("Up"):
+		# Acelera hacia adelante
+		speed += acceleration * delta
+	elif Input.is_action_pressed("Down"):
+		# Acelera hacia atrás (reversa)
+		speed -= acceleration * delta
+	else:
+		# Si no se presiona nada, aplica fricción para ir frenando
+		if abs(speed) > 0:
+			# move_toward reduce "speed" hacia 0 gradualmente
+			speed = move_toward(speed, 0, friction * delta)
 
-		# -- Movimiento del auto --
-		velocity.y = -speed
-		if Input.is_action_pressed("Up"):
-			speed += acceleration
+	# Limita la velocidad dentro de los máximos definidos
+	speed = clamp(speed, -max_reverse, max_forward)
 
-		# -- Maquina de estados --
-		match state: 
-			State.IDLE:
+	# --- Controles de giro ---
+	if abs(speed) > 10:  # Solo permite girar si el auto está moviéndose (evita girar en el lugar)
+		if Input.is_action_pressed("Left"):
+			# Gira hacia la izquierda (sentido horario)
+			rotation -= turn_speed * delta * sign(speed)
+		elif Input.is_action_pressed("Right"):
+			# Gira hacia la derecha (sentido antihorario)
+			rotation += turn_speed * delta * sign(speed)
 
-				# ANIMACION DE ESTAR QUIETO
+	# --- Movimiento según la rotación actual ---
+	# Vector2.RIGHT porque tu sprite apunta hacia la derecha.
+	# Si el sprite apuntara hacia arriba, usarías Vector2.UP.
+	var direction := Vector2.RIGHT.rotated(rotation)
 
-				# --- CAMBIO ---
-				if Input.is_action_just_pressed("Down") or Input.is_action_just_pressed("up") or Input.is_action_just_pressed("Left") or Input.is_action_just_pressed("Right"):
-					state = State.DRIVE
+	# Calcula la velocidad final aplicando dirección y velocidad
+	velocity = direction * speed * delta
 
-			State.DRIVE:
-
-				# ANIMACION DE MANEJAR
-
-				# -- Movimiento del auto --
-				if Input.is_action_pressed("Up"):
-					speed += acceleration # Aumenta la velocidad
-				elif Input.is_action_pressed("Down"):
-					speed -= acceleration # Disminuye la velocidad
-				else:
-					speed *= friction # Frena de a poco cuando no presionas nada
-				speed = clamp(speed, -max_reverse, max_forward) # Velocidad y retroceso maximo
-
-				position.y -= speed
-
-
-				# -- Rotacion del vehiculo --
-				
-
-				# --- CAMBIO ---
-				
-
-			State.DEAD:
-
-				# ANIMACION DE MUERTE
-
-				# --- CAMBIO ---
-				pass
-
-		move_and_slide()
+	# Mueve el cuerpo y detecta colisiones automáticamente
+	move_and_collide(velocity)
