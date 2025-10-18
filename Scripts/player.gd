@@ -5,7 +5,7 @@ var speed = 400
 var exist = true # Booleano para saber si esta o no siendo controlado el personaje
 
 # -- Referencia a objetos --
-@onready var sprite = $Sprite2D
+@onready var sprite = $AnimatedSprite2D
 
 
 # -- Distintos estados --
